@@ -12,7 +12,7 @@ export type TodolistPropsType = {
     tasks: TaskType[]
     title: string
     removeTask: (id: number) => void
-    filteredTasksOnLick: (value: FilterValueType) => void
+    changeFilter: (value: FilterValueType) => void
 
 }
 
@@ -35,9 +35,9 @@ export const Todolist = (props: TodolistPropsType) => {
                     )
                 })}
             </ul>
-            <button onClick={()=> props.filteredTasksOnLick('all')}>All</button>
-            <button onClick={()=> props.filteredTasksOnLick('active')}>Active</button>
-            <button onClick={()=> props.filteredTasksOnLick('completed')}>Completed</button>
+            <button onClick={()=> props.changeFilter('all')}>All</button>
+            <button onClick={()=> props.changeFilter('active')}>Active</button>
+            <button onClick={()=> props.changeFilter('completed')}>Completed</button>
 
 
         </div>

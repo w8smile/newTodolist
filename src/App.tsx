@@ -7,7 +7,6 @@ export type FilterValueType = 'all' | 'completed' | 'active'
 function App() {
     let [filter, setFilter] = useState<FilterValueType>('all')
 
-
     let [tasks, setTasks] = useState<TaskType[]>(
         [
             {id: 1, title: 'HTML&CSS', isDone: true},
@@ -17,14 +16,14 @@ function App() {
         ]
     )
 
-    let filteredTasks = tasks;
+    let taskForTodolist = tasks;
       if (filter==='completed') {
-          filteredTasks=tasks.filter(t=>t.isDone===true)
+          taskForTodolist=tasks.filter(t=>t.isDone===true)
       }
       if (filter==='active') {
-          filteredTasks=tasks.filter(t=>t.isDone===false)
+          taskForTodolist=tasks.filter(t=>t.isDone===false)
       }
-    let filteredTasksOnLick =(value:FilterValueType ) => {
+    let changeFilter =(value:FilterValueType ) => {
           setFilter(value)
 
     }
@@ -45,10 +44,9 @@ function App() {
     return (
         <div className="App">
             <Todolist title='What to learn'
-                      tasks={filteredTasks}
+                      tasks={taskForTodolist}
                       removeTask={removeTask}
-                      filteredTasksOnLick={filteredTasksOnLick}
-
+                      changeFilter={changeFilter}
             />
             {/*<Todolist title='Lifestyle' tasks={tasks2}/>*/}
         </div>
