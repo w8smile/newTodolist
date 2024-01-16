@@ -39,6 +39,12 @@ function App() {
         setTasks(filteredTasks)
     }
 
+    const changeCheckbox = (tid: string, isDone: boolean) => {
+        let task = tasks.find(t=>t.id===tid);
+        if (task) {task.isDone=isDone;}
+        setTasks([...tasks])
+    }
+
 
     // const tasks2: TaskType[] = [
     //   {id: 1, title: 'Water', isDone: true},
@@ -54,6 +60,9 @@ function App() {
                       removeTask={removeTask}
                       changeFilter={changeFilter}
                       addTask={addTask}
+                      changeCheckbox={changeCheckbox}
+                      filter={filter}
+
             />
             {/*<Todolist title='Lifestyle' tasks={tasks2}/>*/}
         </div>
